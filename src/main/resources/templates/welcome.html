@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="../static/css/style.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+
+    <title>Getting started with thymeleaf</title>
+</head>
+<body>
+<section>
+    <div class="jumbotron">
+
+        <div class="container" th:class="my-class">
+            <h1 th:text="${greeting}"></h1>
+            <p th:text="${tagline}"></p>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
