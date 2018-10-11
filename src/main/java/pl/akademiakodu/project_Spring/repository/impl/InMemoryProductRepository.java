@@ -5,8 +5,7 @@ import pl.akademiakodu.project_Spring.model.Product;
 import pl.akademiakodu.project_Spring.repository.ProductRepository;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Repository
 public class InMemoryProductRepository implements ProductRepository {
@@ -39,5 +38,54 @@ public class InMemoryProductRepository implements ProductRepository {
     @Override
     public List<Product> getAllProducts() {
         return listOfProducts;
+    }
+
+    @Override
+    public List<Product> getProductByCategory(String category) {
+        List<Product> productsByCategory = new ArrayList<Product>();
+        for (Product product : listOfProducts) {
+            if (category.equalsIgnoreCase(product.getCategory())) {
+                productsByCategory.add(product);
+            }
+        }
+        return productsByCategory;
+    }
+
+    @Override
+    public Set<Product> getProductsByFilter(Map<String, List<String>> filterParams) {
+        Set<Product> productsByBrand = new HashSet<Product>();
+        Set<Product> productsByCategory = new HashSet<Product>();
+        Set<String> criterias = filterParams.keySet();
+        if (criterias.contains("brand")) {
+            for (String brandName: filterParams.get("brand")) {
+                for (Product product: listOfProducts) {
+                    if (brandName.equalsIgnoreCase(product.getManufacturer())) {
+                        productsByBrand.add(product);
+                    }
+                }
+            }
+        }
+        if (criterias.contains("category")) {
+            for (String category: filterParams.get("category")) {
+                productsByCategory.addAll(this.getProductByCategory(category));
+            }
+        }
+        productsByCategory.retainAll(productsByBrand);
+        return productsByCategory;
+    }
+
+    @Override
+    public Product getProductById(String productId) {
+        Product productById = null;
+        for (Product product : listOfProducts) {
+            if (product != null && product.getProductId() != null && product.getProductId().equals(productId)) {
+                productById = product;
+                break;
+            }
+        }
+        if (productById == null) {
+            throw new IllegalArgumentException("Brak produktu o wskazanym ID: " + productId);
+        }
+        return productById;
     }
 }

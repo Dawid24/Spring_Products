@@ -3,6 +3,11 @@
     background-color: black;
 }
 
+.my-class1 {
+    color: darkcyan;
+    background-color: coral;
+}
+
 .my_owner_header {
     position: relative;
     margin-top: 0px;

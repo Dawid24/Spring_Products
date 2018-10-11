@@ -5,6 +5,8 @@
     <link href="../static/css/style.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
     <title>Produkty</title>
 </head>
 <body>
@@ -18,7 +20,7 @@
                 <h3 th:text="${product.name}"></h3>
                 <p th:text="${product.description}"></p>
                 <p th:text="${product.unitPrice + ' PLN'}"></p>
-                <p th:text="${'Liczba sztu w magazynie: ' + product.unitsInStock}"></p>
+                <p th:text="${'Liczba sztuk w magazynie: ' + product.unitsInStock}"></p>
             </div>
         </th:block>
     </div>

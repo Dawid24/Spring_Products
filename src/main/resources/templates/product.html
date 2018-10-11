@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" charset="UTF-8">
+    <link href="../static/css/style.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <title>Produkt</title>
+</head>
+<body>
+<h1>Produkt</h1>
+
+<section class="container" th:class="my-class">
+    <div class="row">
+        <div class="col-md-5">
+            <h3 th:text="${product.name}"></h3>
+            <p th:text="${product.description}"></p>
+            <p>
+                <strong>Kod produktu: </strong><span class="my-class" th:text="${product.productId}"></span>
+            </p>
+            <p>
+                <strong>Producent: </strong><th:block th:text="${product.manufacturer}"></th:block>
+            </p>
+            <p>
+                <strong>Kategoria: </strong><th:block th:text="${product.category}"></th:block>
+            </p>
+            <p>
+                <strong>Dostępna liczba sztuk
+                </strong><th:block th:text="${product.unitsInStock}"></th:block>
+            </p>
+            <h4 th:text="${product.unitPrice + ' PLN'}"></h4>
+            <p>
+
+                <button th:class="my-class1">Zamów teraz</button>
+            </p>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
